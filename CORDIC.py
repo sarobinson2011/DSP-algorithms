@@ -3,12 +3,12 @@ import math
 """ takes an angle in radians and the number of iterations to perform as input, 
    and returns the sine and cosine of the angle as output """
 
-def cordic_sine_cosine(angle, num_iterations):
+def cordic_sine_cosine(angle, iterations):
     # Initialize variables
     x = 1.0
     y = 0.0
     z = angle
-    for i in range(num_iterations):
+    for i in range(iterations):
         # Calculate next iteration
         d = 1.0 if z > 0 else -1.0
         x_new = x - d * y / (2**i)
@@ -27,6 +27,6 @@ def cordic_sine_cosine(angle, num_iterations):
    more iterations will result in a more accurate answer, but will also take longer to compute. """
 
 angle = math.pi / 4  # 45 degrees in radians
-num_iterations = 10
-sine, cosine = cordic_sine_cosine(angle, num_iterations)
+iterations = 10
+sine, cosine = cordic_sine_cosine(angle, iterations)
 print(f'sine({angle}): {sine}, cosine({angle}): {cosine}')
